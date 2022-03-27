@@ -1,8 +1,8 @@
 {
-  "name": "com.tal.unity.uiframework",
-  "displayName": "Tal.UIFramework",
+  "name": "com.uitoolkit.uiframework",
+  "displayName": "UIToolkit.UIFramework",
   "description": "UIFramework",
-  "version": "1.0.6",
+  "version": "1.0.0",
   "unity": "2020.1",
   "license": "MIT",
   "type": "library",
