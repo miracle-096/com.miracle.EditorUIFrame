@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 
 namespace UIFramework.Editor.CustomElement.Foldout
 {
-    [UI(Uxml = "Packages/com.tal.unity.uiframework/Editor/CustomElement/Foldout/FoldoutHeader.uxml",
-        Uss = "Packages/com.tal.unity.uiframework/Editor/CustomElement/Foldout/FoldoutHeader.uss")]
+    [UI(Uxml = "Packages/com.uitoolkit.uiframework/Editor/CustomElement/Foldout/FoldoutHeader.uxml",
+        Uss = "Packages/com.uitoolkit.uiframework/Editor/CustomElement/Foldout/FoldoutHeader.uss")]
     public class FoldoutHeader : Editor.Core.TUIElement
     {
         public GenUIPanel toggleParent;
@@ -39,6 +39,11 @@ namespace UIFramework.Editor.CustomElement.Foldout
             label.text = text;
             this.elementName = elementName;
             elementType = type;
+        }
+
+        protected override void InitComponent()
+        {
+            
         }
 
         protected override void OnCreate(params object[] objs)

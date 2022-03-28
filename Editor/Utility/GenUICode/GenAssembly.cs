@@ -3,7 +3,7 @@ using System;
 namespace UIFramework.Editor.Utility.GenUICode
 {
     [Serializable]
-    public class Assembly
+    public class GenAssembly
     {
         public string rootNamespace;
     }

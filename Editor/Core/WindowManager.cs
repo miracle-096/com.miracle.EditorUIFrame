@@ -70,22 +70,24 @@ namespace UIFramework.Editor.Core
         {
             HideWindow(typeof(T));
         }
-        [MenuItem("Test/BlockUserInput")]
-        public static void BlockUserInput()
-        {
-            foreach(var kv in windows)
-            {
-                kv.Value.BlockUserInput();
-            }
-            var scenviews = Resources.FindObjectsOfTypeAll<SceneView>();
-            for(int i = 0; i < scenviews.Length; ++i)
-            {
-                var sceneview = scenviews[i];
-                var image = sceneview.rootVisualElement.Q<Image>("image_input_block")??new Image();
-                image.name = "image_input_block";
-                TUIWindow.BlockInput(sceneview.rootVisualElement, image);
-            }
-        }
+
+        // [MenuItem("Test/BlockUserInput")]
+        // public static void BlockUserInput()
+        // {
+        //     foreach (var kv in windows)
+        //     {
+        //         kv.Value.BlockUserInput();
+        //     }
+        //
+        //     var scenviews = Resources.FindObjectsOfTypeAll<SceneView>();
+        //     for (int i = 0; i < scenviews.Length; ++i)
+        //     {
+        //         var sceneview = scenviews[i];
+        //         var image = sceneview.rootVisualElement.Q<Image>("image_input_block") ?? new Image();
+        //         image.name = "image_input_block";
+        //         TUIWindow.BlockInput(sceneview.rootVisualElement, image);
+        //     }
+        // }
 
         public static void ResumeUserInput()
         {

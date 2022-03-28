@@ -7,15 +7,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System;
+using UnityEngine;
 namespace UIFramework.Utility.GenUICode
 {
-    using System;
-    using UnityEngine;
-    
-    
-    [UIFramework.UIAttribute(Uxml = "Packages/com.tal.unity.uiframework/Editor/Utility/GenUICode/GenUIPanel.uxml",
-        Uss="Packages/com.tal.unity.uiframework/Editor/Utility/GenUICode/GenUIPanel.uss")]
+    [UIFramework.UIAttribute(Uxml = "Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uxml",
+        Uss="Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uss")]
     public partial class GenUIPanel : Editor.Core.TUIElement
     {
         

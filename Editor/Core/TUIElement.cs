@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace UIFramework.Editor.Core
 {
-    public class TUIElement
+    public abstract class TUIElement
     {
         public static T Create<T>(VisualElement container, params object[] objs) where T : TUIElement
         {
@@ -14,9 +14,9 @@ namespace UIFramework.Editor.Core
 
         public static TUIElement Create(Type uiType, VisualElement container, params object[] objs)
         {
-            container.RegisterCallback<DragEnterEvent>(OnDragEnter);
-            container.RegisterCallback<DragLeaveEvent>(OnDragLeave);
-            container.RegisterCallback<DragExitedEvent>(OnDragExit);
+            // container.RegisterCallback<DragEnterEvent>(OnDragEnter);
+            // container.RegisterCallback<DragLeaveEvent>(OnDragLeave);
+            // container.RegisterCallback<DragExitedEvent>(OnDragExit);
             if (!(Activator.CreateInstance(uiType, container) is TUIElement ui))
                 throw new NullReferenceException($"{uiType} instance failure");
             ui.OnCreate(objs);
@@ -111,9 +111,7 @@ namespace UIFramework.Editor.Core
             _isDestroy = false;
         }
 
-        protected virtual void InitComponent()
-        {
-        }
+        protected abstract void InitComponent();
 
         protected virtual void OnGeometryChangeHandler(GeometryChangedEvent evt)
         {

@@ -118,7 +118,6 @@ namespace UIFramework.Editor.Core
 
         protected virtual void OnGUI()
         {
-
             var currentEvent = Event.current;
             if (currentEvent != null)
             {

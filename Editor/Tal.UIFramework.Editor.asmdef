@@ -1,5 +1,5 @@
 {
-    "name": "Tal.UIFramework.Editor",
+    "name": "UIToolkit.UIFramework.Editor",
     "rootNamespace": "UIFramework.Editor",
     "references": [],
     "includePlatforms": [

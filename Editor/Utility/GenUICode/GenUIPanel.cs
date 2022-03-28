@@ -53,6 +53,11 @@ namespace UIFramework.Utility.GenUICode
                 Path.GetFileNameWithoutExtension(ParseUxmlPath), fields, File.Exists(csFilePath));
         }
 
+        protected override void InitComponent()
+        {
+            
+        }
+
         protected override void OnCreate(params object[] objs)
         {
             base.OnCreate();
@@ -76,12 +81,12 @@ namespace UIFramework.Utility.GenUICode
             {
                 GetNamespace("/Runtime/", out asmdef, out spaces);
             }
-            Assembly assembly = JsonUtility.FromJson<Assembly>(asmdef.text);
+            GenAssembly genAssembly = JsonUtility.FromJson<GenAssembly>(asmdef.text);
 
             NameSpace.value = string.Join(".", spaces, 0, spaces.Length - 1);
-            if (!string.IsNullOrEmpty(assembly.rootNamespace))
+            if (!string.IsNullOrEmpty(genAssembly.rootNamespace))
             {
-                NameSpace.value = assembly.rootNamespace + "." + NameSpace.value;
+                NameSpace.value = genAssembly.rootNamespace + "." + NameSpace.value;
             }
             
             UxmlName = Path.GetFileName(ParseUxmlPath);
