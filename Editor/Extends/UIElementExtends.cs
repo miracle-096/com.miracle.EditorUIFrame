@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -50,11 +51,38 @@ namespace UIFramework.Editor.Extends
             element.style.backgroundImage = texture2D;
         }
 
-        public static void CleanAllChild(this VisualElement element)
+        public static void CleanAllChild(this VisualElement element,Func<int,VisualElement,bool> validateFunc = null)
         {
-            for (int i = 0; i < element.childCount; i++)
+            for (int i = element.childCount-1; i >=0 ; i--)
             {
-                element.RemoveAt(0);
+                if (validateFunc==null)
+                {
+                    element.RemoveAt(i);
+                }
+                else
+                {
+                    if (validateFunc.Invoke(i,element[i]))
+                    {
+                        element.RemoveAt(i);
+                    }
+                }
+            }
+        }
+        public static void DisplayNoneChild(this VisualElement element,Func<int,VisualElement,bool> validateFunc = null)
+        {
+            for (int i = element.childCount-1; i >=0 ; i--)
+            {
+                if (validateFunc==null)
+                {
+                    element.ElementAt(i).style.display = DisplayStyle.None;
+                }
+                else
+                {
+                    if (validateFunc.Invoke(i,element[i]))
+                    {
+                        element.ElementAt(i).style.display = DisplayStyle.None;
+                    }
+                }
             }
         }
     }

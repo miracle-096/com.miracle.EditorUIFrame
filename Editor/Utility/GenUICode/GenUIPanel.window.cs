@@ -1,17 +1,15 @@
-using UIFramework.Editor.Core;
-using UIFramework.Utility;
-using UIFramework.Utility.GenUICode;
+using UIFramework.Core;
 using UnityEngine;
 
 namespace UIFramework.Editor.Utility.GenUICode
 {
-    public class GenUIPanel_window : TUIWindow
+    public class GenUIWindow : UIWindow
     {
         public GenUIPanel uiPage;
         public static string ParsUxmlPath;
         private Vector2 preSize;
 
-        public override TUIElement MakeView()
+        protected override UIElement MakeView(params object[] objs)
         {
             rootVisualElement.Clear();
             uiPage = UILoader.LoadElement<GenUIPanel>(rootVisualElement,ParsUxmlPath);

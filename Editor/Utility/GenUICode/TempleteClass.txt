@@ -1,0 +1,10 @@
+[UIFramework.UIAttribute(Uxml = "@Uxml",Uss="@Uss")]
+public partial class @ClassName : UIElement
+{
+@Members
+    
+    public @ClassName(TemplateContainer container) : base(container)
+    {
+@Constructs
+    }
+}

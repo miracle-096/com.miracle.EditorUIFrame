@@ -1,32 +1,32 @@
 using System;
 using System.Collections.Generic;
-using UIFramework.Editor.Core;
-using UIFramework.EventHandlers.Interface;
+using UIFramework.Core;
+using UIFramework.Core.UIEvent.Interface;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Editor.Extends
+namespace UIFramework.Extends
 {
     public static class Extends
     {
-        public static void Destroy(this TUIElement element)
+        public static void Destroy(this UIElement element)
         {
-            TUIElement.Destroy(element);
+            UIElement.Destroy(element);
         }
-        public static T GetComponent<T>(this VisualElement element) where T : TComponent
+
+        public static T GetComponent<T>(this VisualElement element) where T : UIComponent
         {
-            if (!TUIWindow.AllObjects.ContainsKey(element)) return null;
-            var components = TUIWindow.AllObjects[element].AllComponents;
+            if (!UIWindow.AllObjects.ContainsKey(element)) return null;
+            var components = UIWindow.AllObjects[element].AllComponents;
             if (components[typeof(T)] != null) return components[typeof(T)] as T;
             return null;
         }
 
-        public static T AddComponent<T>(this VisualElement target, TUIElement panel)
-            where T : TComponent, new()
+        public static T AddComponent<T>(this VisualElement target, UIElement panel = null)
+            where T : UIComponent, new()
         {
-            var visualObject = TUIWindow.Find(target);
-            visualObject.AllComponents ??= new Dictionary<Type, TComponent>();
+            var visualObject = UIWindow.Find(target);
+            visualObject.AllComponents ??= new Dictionary<Type, UIComponent>();
             T component = new T();
             component.gameobject = visualObject;
             component.element = target;
@@ -35,9 +35,9 @@ namespace UIFramework.Editor.Extends
             Type[] ins = typeof(T).GetInterfaces();
             foreach (var ty in ins)
             {
-                if (TUIWindow.EventHandlerFactory.ContainsKey(ty))
+                if (UIWindow.EventHandlerFactory.ContainsKey(ty))
                 {
-                    TUIWindow.EventHandlerFactory[ty].Invoke(component, target);
+                    UIWindow.EventHandlerFactory[ty].Invoke(component, target);
                 }
             }
 
@@ -46,22 +46,24 @@ namespace UIFramework.Editor.Extends
             return component;
         }
 
-        public static void OnStartDragableExtends(this TDragableEvent handler, MouseDownEvent evt)
+        public static void OnStartDragExtends(this IDraggableUIEvent handler, MouseDownEvent evt)
         {
             if (evt.button == 1) return;
-            DragAndDrop.PrepareStartDrag();
-            DragAndDrop.SetGenericData("data", handler.DragData);
-            DragAndDrop.StartDrag("");
-            DragAndDrop.visualMode = DragAndDropVisualMode.Move;
             handler.OnStartDrag(evt);
         }
+        public static void OnStopDragExtends(this IDraggableUIEvent handler, MouseUpEvent evt)
+        {
+            if (evt.button == 1) return;
+            handler.OnStopDrag(evt);
+        }
 
-        public static void OnDoubleClickExtends(this TDoubleClickEvent handler, ClickEvent evt, int millisecond)
+        public static void OnDoubleClickExtends(this IDoubleClickUIEvent handler, ClickEvent evt, int millisecond)
         {
             if (handler.StopPropagation)
             {
                 evt.StopPropagation();
             }
+
             long setInterval = millisecond * 10000L;
             var t = (DateTime.Now.Ticks - handler.PreClickTime);
             handler.PreClickTime = DateTime.Now.Ticks;
@@ -69,7 +71,7 @@ namespace UIFramework.Editor.Extends
             handler.OnDoubleClick(evt);
         }
 
-        public static void OnDragUpdatedExtends(this TDragEvent handler, DragUpdatedEvent evt)
+        public static void OnDragUpdatedExtends(this IReceiveDragUIEvent handler, DragUpdatedEvent evt)
         {
             DragAndDrop.visualMode = DragAndDropVisualMode.Move;
             handler.OnDragUpdated(evt);

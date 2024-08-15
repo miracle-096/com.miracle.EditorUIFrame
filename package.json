@@ -8,6 +8,6 @@
   "type": "library",
   "restart": 1,
   "dependencies": {
-    "com.unity.addressables": "1.19.19"
+    
   }
 }

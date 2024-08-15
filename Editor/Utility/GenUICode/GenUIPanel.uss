@@ -1,13 +1,3 @@
-.label_focus {
-    color: white;
-    font-size: 14px;
-}
-
-.label_blur {
-    color: black;
-    font-size: 14px;
-}
-
 #unity-low-button {
     display: none;
 }

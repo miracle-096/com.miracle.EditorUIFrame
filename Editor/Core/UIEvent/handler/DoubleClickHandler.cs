@@ -1,10 +1,8 @@
-using System;
-using UIFramework.Editor;
-using UIFramework.Editor.Extends;
-using UIFramework.EventHandlers.Interface;
+using UIFramework.Core.UIEvent.Interface;
+using UIFramework.Extends;
 using UnityEngine.UIElements;
 
-namespace UIFramework.EventHandlers
+namespace UIFramework.Core.UIEvent.handler
 {
     public class DoubleClickHandler
     {
@@ -15,13 +13,13 @@ namespace UIFramework.EventHandlers
         /// <param name="target">元素对象</param>
         /// <param name="millisecond">毫秒值</param>
         /// <typeparam name="T">页面对象类型</typeparam>
-        public static void RegistDoubleClickEvent<T>(T panel, VisualElement target, int millisecond)
-            where T : TDoubleClickEvent
+        public static void RegisterDoubleClickEvent<T>(T panel, VisualElement target, int millisecond)
+            where T : IDoubleClickUIEvent
         {
             target?.RegisterCallback<ClickEvent, int>(panel.OnDoubleClickExtends, millisecond);
         }
 
-        public static void UnRegistDoubleClickEvent<T>(T panel, VisualElement target) where T : TDoubleClickEvent
+        public static void UnRegisterDoubleClickEvent<T>(T panel, VisualElement target) where T : IDoubleClickUIEvent
         {
             target?.UnregisterCallback<ClickEvent, int>(panel.OnDoubleClickExtends);
         }

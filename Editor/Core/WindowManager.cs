@@ -1,19 +1,19 @@
 using System;
 using System.Collections.Generic;
+using UIFramework.Core;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace UIFramework.Editor.Core
 {
     public static class WindowManager
     {
-        private static Dictionary<Type, TUIWindow> windows = new Dictionary<Type, TUIWindow>();
+        private static Dictionary<Type, UIWindow> windows = new Dictionary<Type, UIWindow>();
 
-        private static Stack<TUIWindow> windowStack = new Stack<TUIWindow>();
+        private static Stack<UIWindow> windowStack = new Stack<UIWindow>();
         public static void OpenWindow(Type type)
         {
-            TUIWindow window = null;
+            UIWindow window = null;
             if (windows.ContainsKey(type))
             {
                 window = windows[type];
@@ -22,9 +22,9 @@ namespace UIFramework.Editor.Core
             {
                 var windows = Resources.FindObjectsOfTypeAll(type);
                 if (windows.Length > 0)
-                    window = windows[0] as TUIWindow;
+                    window = windows[0] as UIWindow;
                 else
-                    window = ScriptableObject.CreateInstance(type) as TUIWindow;
+                    window = ScriptableObject.CreateInstance(type) as UIWindow;
             }
             
             window.Show();
@@ -38,7 +38,7 @@ namespace UIFramework.Editor.Core
             }
         }
 
-        public static void RegisterWindow(Type type, TUIWindow window)
+        public static void RegisterWindow(Type type, UIWindow window)
         {
             if (windows.ContainsKey(type)) return;
             windows.Add(type, window);
@@ -49,7 +49,7 @@ namespace UIFramework.Editor.Core
             };
         }
 
-        public static T GetWindow<T>() where T:TUIWindow
+        public static T GetWindow<T>() where T:UIWindow
         {
             return windows[typeof(T)] as T;
         }
@@ -61,50 +61,14 @@ namespace UIFramework.Editor.Core
                 windows.Remove(type);
             }
         }
-        public static void OpenWindow<T>() where T : TUIWindow
+        public static void OpenWindow<T>() where T : UIWindow
         {
             OpenWindow(typeof(T));
         }
 
-        public static void HideWindow<T>() where T : TUIWindow
+        public static void HideWindow<T>() where T : UIWindow
         {
             HideWindow(typeof(T));
-        }
-
-        // [MenuItem("Test/BlockUserInput")]
-        // public static void BlockUserInput()
-        // {
-        //     foreach (var kv in windows)
-        //     {
-        //         kv.Value.BlockUserInput();
-        //     }
-        //
-        //     var scenviews = Resources.FindObjectsOfTypeAll<SceneView>();
-        //     for (int i = 0; i < scenviews.Length; ++i)
-        //     {
-        //         var sceneview = scenviews[i];
-        //         var image = sceneview.rootVisualElement.Q<Image>("image_input_block") ?? new Image();
-        //         image.name = "image_input_block";
-        //         TUIWindow.BlockInput(sceneview.rootVisualElement, image);
-        //     }
-        // }
-
-        public static void ResumeUserInput()
-        {
-            foreach (var kv in windows)
-            {
-                kv.Value.ResumeUserInput();
-            }
-            var scenviews = Resources.FindObjectsOfTypeAll<SceneView>();
-            for (int i = 0; i < scenviews.Length; ++i)
-            {
-                var sceneview = scenviews[i];
-                var image = sceneview.rootVisualElement.Q<Image>("image_input_block");
-                if(image != null)
-                {
-                    image.style.display = DisplayStyle.None;
-                }
-            }
         }
     }
 }

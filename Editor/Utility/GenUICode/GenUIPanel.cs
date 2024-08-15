@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UIFramework.Editor.CustomElement.Foldout;
-using UIFramework.Editor.Extends;
-using UIFramework.Editor.Utility;
-using UIFramework.Editor.Utility.GenUICode;
-using UIFramework.GenUICode.Component;
+using UIFramework.Editor.Utility.GenUICode.Component;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Utility.GenUICode
+namespace UIFramework.Editor.Utility.GenUICode
 {
     public partial class GenUIPanel
     {
@@ -53,15 +50,10 @@ namespace UIFramework.Utility.GenUICode
                 Path.GetFileNameWithoutExtension(ParseUxmlPath), fields, File.Exists(csFilePath));
         }
 
-        protected override void InitComponent()
-        {
-            
-        }
-
         protected override void OnCreate(params object[] objs)
         {
             base.OnCreate();
-            CutLine.AddComponent<CutlineComponent>(this);
+            UIFramework.Extends.Extends.AddComponent<DivideLineUIComponent>(CutLine, this);
 
             toggleGroup = new List<FoldoutHeader>();
             RootContainer.style.width = new StyleLength(new Length(100, LengthUnit.Percent));
@@ -70,24 +62,25 @@ namespace UIFramework.Utility.GenUICode
             Generate.clicked += OnGenerateClick;
 
             ParseUxmlPath = objs[0] as string;
-            string[] spaces = null;
-            AssemblyDefinitionAsset asmdef = null;
-            if (ParseUxmlPath.Contains("/Editor/"))
-            {
-                GetNamespace("/Editor/", out asmdef, out spaces);
-            }
+            //string[] spaces = null;
+            //AssemblyDefinitionAsset asmdef = null;
+            // if (ParseUxmlPath.Contains("/Editor/"))
+            // {
+            //     GetNamespace("/Editor/", out asmdef, out spaces);
+            // }
+            //
+            // if (ParseUxmlPath.Contains("/Runtime/"))
+            // {
+            //     GetNamespace("/Runtime/", out asmdef, out spaces);
+            // }
+            // GenAssembly genAssembly = JsonUtility.FromJson<GenAssembly>(asmdef.text);
 
-            if (ParseUxmlPath.Contains("/Runtime/"))
-            {
-                GetNamespace("/Runtime/", out asmdef, out spaces);
-            }
-            GenAssembly genAssembly = JsonUtility.FromJson<GenAssembly>(asmdef.text);
-
-            NameSpace.value = string.Join(".", spaces, 0, spaces.Length - 1);
-            if (!string.IsNullOrEmpty(genAssembly.rootNamespace))
-            {
-                NameSpace.value = genAssembly.rootNamespace + "." + NameSpace.value;
-            }
+            // NameSpace.value = string.Join(".", spaces, 0, spaces.Length - 1);
+            // if (!string.IsNullOrEmpty(genAssembly.rootNamespace))
+            // {
+            //     NameSpace.value = genAssembly.rootNamespace + "." + NameSpace.value;
+            // }
+            NameSpace.value = "";
             
             UxmlName = Path.GetFileName(ParseUxmlPath);
             CsName = Path.GetFileNameWithoutExtension(ParseUxmlPath) + ".ui.cs";

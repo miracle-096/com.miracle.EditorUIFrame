@@ -8,47 +8,48 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using UIFramework.Core;
 using UnityEngine;
-namespace UIFramework.Utility.GenUICode
+using UnityEngine.UIElements;
+namespace UIFramework.Editor.Utility.GenUICode
 {
     [UIFramework.UIAttribute(Uxml = "Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uxml",
         Uss="Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uss")]
-    public partial class GenUIPanel : Editor.Core.TUIElement
+    public partial class GenUIPanel : UIElement
     {
         
-        public UnityEngine.UIElements.VisualElement Root;
+        public VisualElement Root;
         
-        public UnityEngine.UIElements.VisualElement Hierarchy;
+        public VisualElement Hierarchy;
         
-        public UnityEngine.UIElements.VisualElement HierarchyTitle;
+        public VisualElement HierarchyTitle;
         
-        public UnityEngine.UIElements.ScrollView RootView;
+        public ScrollView RootView;
         
-        public UnityEngine.UIElements.VisualElement CutLine;
+        public VisualElement CutLine;
         
-        public UnityEngine.UIElements.VisualElement Inspector;
+        public VisualElement Inspector;
         
-        public UnityEngine.UIElements.VisualElement InspectorTitle;
+        public VisualElement InspectorTitle;
         
-        public UnityEngine.UIElements.TextField NameSpace;
+        public TextField NameSpace;
         
-        public UnityEngine.UIElements.VisualElement InspectorFoot;
+        public VisualElement InspectorFoot;
         
-        public UnityEngine.UIElements.Button Generate;
+        public Button Generate;
         
-        public GenUIPanel(UnityEngine.UIElements.TemplateContainer container) : 
-                base(container)
+        public GenUIPanel(TemplateContainer container) : base(container)
         {
-            Root = Q<UnityEngine.UIElements.VisualElement>("root");
-            Hierarchy = Q<UnityEngine.UIElements.VisualElement>("hierarchy");
-            HierarchyTitle = Q<UnityEngine.UIElements.VisualElement>("hierarchy_title");
-            RootView = Q<UnityEngine.UIElements.ScrollView>("root_view");
-            CutLine = Q<UnityEngine.UIElements.VisualElement>("cut_line");
-            Inspector = Q<UnityEngine.UIElements.VisualElement>("inspector");
-            InspectorTitle = Q<UnityEngine.UIElements.VisualElement>("inspector_title");
-            NameSpace = Q<UnityEngine.UIElements.TextField>("name_space");
-            InspectorFoot = Q<UnityEngine.UIElements.VisualElement>("inspector_foot");
-            Generate = Q<UnityEngine.UIElements.Button>("generate");
+            Root = Q<VisualElement>("root");
+            Hierarchy = Q<VisualElement>("hierarchy");
+            HierarchyTitle = Q<VisualElement>("hierarchy_title");
+            RootView = Q<ScrollView>("root_view");
+            CutLine = Q<VisualElement>("cut_line");
+            Inspector = Q<VisualElement>("inspector");
+            InspectorTitle = Q<VisualElement>("inspector_title");
+            NameSpace = Q<TextField>("name_space");
+            InspectorFoot = Q<VisualElement>("inspector_foot");
+            Generate = Q<Button>("generate");
         }
     }
 }

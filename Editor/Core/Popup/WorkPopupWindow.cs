@@ -1,4 +1,5 @@
 using System;
+using UIFramework.Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,9 +8,9 @@ namespace UIFramework.Editor.Core.Popup
     public class WorkPopupWindow: EditorWindow
     {
         private Action UpdateCallback;
-        public Editor.Core.TUIElement PopupElement;
+        public UIElement PopupElement;
         
-        public void SetContent(Editor.Core.TUIElement popElement, Vector2 fixedSize, Action update)
+        public void SetContent(UIElement popElement, Vector2 fixedSize, Action update)
         {
             rootVisualElement.Clear();
             this.PopupElement = popElement;
@@ -31,7 +32,7 @@ namespace UIFramework.Editor.Core.Popup
             }
             UpdateCallback?.Invoke();
             
-            Repaint(); // force to repaint to avoid text input font color bug
+            //Repaint();
         }
 
         private void OnDestroy()
