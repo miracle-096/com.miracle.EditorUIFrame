@@ -15,7 +15,7 @@ namespace UIFramework.Editor.Utility.GenUICode
 {
     [UIFramework.UIAttribute(Uxml = "Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uxml",
         Uss="Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uss")]
-    public partial class GenUIPanel : UIElement
+    public partial class GenUIPanel : EPanel
     {
         
         public VisualElement Root;

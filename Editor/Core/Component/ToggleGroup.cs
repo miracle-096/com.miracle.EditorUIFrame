@@ -4,13 +4,13 @@ using UnityEngine.UIElements;
 
 namespace UIFramework.Core.Component
 {
-    public class ToggleGroup: UIComponent
+    public class ToggleGroup: EComponent
     {
         public List<VisualElement> toggleGroup { get; } = new List<VisualElement>();
 
-        private UIElement _panel;
+        private EPanel _panel;
 
-        public UIElement Panel
+        public EPanel Panel
         {
             get => _panel??=GetPanel(out Type type);
             set => _panel = value;

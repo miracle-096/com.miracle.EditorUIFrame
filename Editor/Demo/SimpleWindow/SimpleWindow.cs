@@ -14,7 +14,7 @@ namespace UIFramework.Editor.Demo.SimpleWindow
             GetWindow<SimpleWindow>().OpenView();
         }
 
-        protected override UIElement MakeView(params object[] objs)
+        protected override EPanel MakeView(params object[] objs)
         {
             rootVisualElement.Clear();
             _uiPage = UILoader.LoadElement<SimplePanel>(rootVisualElement);

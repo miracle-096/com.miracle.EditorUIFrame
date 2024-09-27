@@ -1,10 +1,9 @@
 using System;
-using UIFramework.Core.UIEvent.Interface;
 using UnityEngine.UIElements;
 
 namespace UIFramework.Core.Component
 {
-    public class ReceiveDragComponent : UIComponent, IReceiveDragUIEvent
+    public class ReceiveDragComponent : EComponent, IReceiveDragUIEvent
     {
         public Action<DragEnterEvent> OnDragEnter;
         public Action<DragLeaveEvent> OnDragLeave;

@@ -17,7 +17,7 @@ namespace UIFramework.Editor.Demo.SimpleWindow
     
     
     [UIFramework.UIAttribute(Uxml="Packages/com.uitoolkit.uiframework/Editor/Demo/SimpleWindow/SimplePanel.uxml", Uss="Packages/com.uitoolkit.uiframework/Editor/Demo/SimpleWindow/SimplePanel.uss")]
-    public partial class SimplePanel : UIElement
+    public partial class SimplePanel : EPanel
     {
         
         public UnityEngine.UIElements.Label LabelID;

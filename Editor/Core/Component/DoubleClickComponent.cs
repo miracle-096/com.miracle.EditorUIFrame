@@ -1,10 +1,9 @@
 using System;
-using UIFramework.Core.UIEvent.Interface;
 using UnityEngine.UIElements;
 
 namespace UIFramework.Core.Component
 {
-    public class DoubleClickComponent: UIComponent,IDoubleClickUIEvent
+    public class DoubleClickComponent: EComponent,IDoubleClickUIEvent
     {
         public long PreClickTime { get; set; }
         public bool StopPropagation { get; set; }

@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace UIFramework.Editor.CustomElement.Foldout.Component
 {
-    public class LabelUIComponent : UIComponent
+    public class LabelEComponent : EComponent
     {
         private FoldoutHeader _panel;
 

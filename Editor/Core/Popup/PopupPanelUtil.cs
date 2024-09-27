@@ -8,7 +8,7 @@ namespace UIFramework.Editor.Core.Popup
 {
     public class PopupPanelUtil
     {
-        private static Dictionary<Tuple<string, string>, Action<UIElement>> CustomItemCallbacks = new Dictionary<Tuple<string, string>, Action<UIElement>>();
+        private static Dictionary<Tuple<string, string>, Action<EPanel>> CustomItemCallbacks = new Dictionary<Tuple<string, string>, Action<EPanel>>();
         
         /*
          * CustomItemCallbacks.Add(new Tuple<string, string>("文本", "自定义文本"), TextEditorPanel.ShowGUI);
@@ -16,13 +16,13 @@ namespace UIFramework.Editor.Core.Popup
          * CustomItemCallbacks.Add(new Tuple<string, string>("演绎动画", "自定义动画"), ActionDriverController.StartActionDriver);
          * CustomItemCallbacks.Add(new Tuple<string, string>("删除", "自定义资源"), ConfirmRemovePanel.ShowGUI);       
          */
-        public static void Init(Dictionary<Tuple<string, string>, Action<UIElement>> popPanelActions)
+        public static void Init(Dictionary<Tuple<string, string>, Action<EPanel>> popPanelActions)
         {
             CustomItemCallbacks = popPanelActions;
         }
         
 
-        public static T GetWindowOfPanelType<T>()  where T: UIElement
+        public static T GetWindowOfPanelType<T>()  where T: EPanel
         {
             foreach (var window in Resources.FindObjectsOfTypeAll<WorkPopupWindow>())
             {
@@ -33,7 +33,7 @@ namespace UIFramework.Editor.Core.Popup
             }
             return null;
         }
-        public static void TryShowPopup<T>(ClickEvent evt, Tuple<string, string,T> param) where T: UIElement
+        public static void TryShowPopup<T>(ClickEvent evt, Tuple<string, string,T> param) where T: EPanel
         {
             var (item1, item2, item3) = param;
             Tuple<string,string> key = new Tuple<string, string>(item1, item2);
@@ -43,7 +43,7 @@ namespace UIFramework.Editor.Core.Popup
             }
         }
 
-        public static void Close(UIElement panel)
+        public static void Close(EPanel panel)
         {
             foreach (var window in Resources.FindObjectsOfTypeAll<WorkPopupWindow>())
             {

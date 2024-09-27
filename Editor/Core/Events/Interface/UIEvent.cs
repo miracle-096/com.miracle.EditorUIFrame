@@ -1,4 +1,4 @@
-namespace UIFramework.Core.UIEvent.Interface
+namespace UIFramework.Core
 {
     public interface IUIEvent
     {

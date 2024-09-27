@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using GenUIPanel = UIFramework.Editor.Utility.GenUICode.GenUIPanel;
 
-public partial class FoldoutHeader : UIElement
+public partial class FoldoutHeader : EPanel
 {
     public GenUIPanel toggleParent;
     public string elementName;
@@ -42,7 +42,7 @@ public partial class FoldoutHeader : UIElement
         }
     }
 
-    public void Init(UIElement parent, string text, string elementName = null, Type type = null)
+    public void Init(EPanel parent, string text, string elementName = null, Type type = null)
     {
         toggleParent = parent as GenUIPanel;
         Text.text = text;
@@ -57,7 +57,7 @@ public partial class FoldoutHeader : UIElement
         base.OnCreate(objs);
         RootContainer.style.width = new StyleLength(new Length(100, LengthUnit.Percent));
         CustomElements = new List<VisualElement>();
-        Root.AddComponent<LabelUIComponent>(this);
+        Root.AddComponent<LabelEComponent>(this);
         blurFoldIcon ??= LoadImg("foldout_blur_on");
         blurUnFoldIcon ??= LoadImg("foldout_blur_off");
         focusFoldIcon ??= LoadImg("foldout_focus_on");

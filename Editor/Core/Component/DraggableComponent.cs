@@ -1,11 +1,10 @@
 using System;
-using UIFramework.Core.UIEvent.Interface;
 using UnityEditor;
 using UnityEngine.UIElements;
 
 namespace UIFramework.Core.Component
 {
-    public class DraggableComponent: UIComponent,IDraggableUIEvent
+    public class DraggableComponent: EComponent,IDraggableUIEvent
     {
         public DragState DragState { get; set; }
         public object DragData { get; set; }

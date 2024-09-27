@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UIFramework.Core.UIEvent.handler;
-using UIFramework.Core.UIEvent.Interface;
 using UIFramework.Editor.Core;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +7,9 @@ using UnityEngine.UIElements;
 
 namespace UIFramework.Core
 {
+    /// <summary>
+    /// 编辑器ui panel容器
+    /// </summary>
     public abstract class UIWindow : EditorWindow
     {
         public virtual Vector2 MIN_SIZE => new Vector2(0, 0);
@@ -19,13 +20,13 @@ namespace UIFramework.Core
         public static Dictionary<VisualElement, VisualObject>
             AllObjects = new Dictionary<VisualElement, VisualObject>();
 
-        private static Dictionary<Type, Action<UIComponent, VisualElement>> eventHandlerFactory;
+        private static Dictionary<Type, Action<EComponent, VisualElement>> eventHandlerFactory;
 
-        public static Dictionary<Type, Action<UIComponent, VisualElement>> EventHandlerFactory
+        public static Dictionary<Type, Action<EComponent, VisualElement>> EventHandlerFactory
         {
             get
             {
-                eventHandlerFactory ??= new Dictionary<Type, Action<UIComponent, VisualElement>>();
+                eventHandlerFactory ??= new Dictionary<Type, Action<EComponent, VisualElement>>();
                 var ass = typeof(DragState).Assembly;
                 var types = ass.GetTypes();
                 foreach (var item in types)
@@ -58,7 +59,7 @@ namespace UIFramework.Core
             }
         }
 
-        public UIElement RootUIElement { get; private set; }
+        public EPanel rootEPanel { get; private set; }
 
         protected virtual void OnEnable()
         {
@@ -72,11 +73,11 @@ namespace UIFramework.Core
 
         protected virtual void OnDestroy()
         {
-            if (RootUIElement != null)
+            if (rootEPanel != null)
             {
-                RootUIElement.OnDestroy();
-                UIElement.Destroy(RootUIElement);
-                RootUIElement = null;
+                rootEPanel.OnDestroy();
+                EPanel.Destroy(rootEPanel);
+                rootEPanel = null;
             }
 
             //To-do: Same as the above.
@@ -96,9 +97,9 @@ namespace UIFramework.Core
         {
             var view = MakeView(objs);
             view.Window = this;
-            RootUIElement = view;
+            rootEPanel = view;
         }
-        protected abstract UIElement MakeView(params object[] objs);
+        protected abstract EPanel MakeView(params object[] objs);
 
         protected virtual void OnGUI()
         {

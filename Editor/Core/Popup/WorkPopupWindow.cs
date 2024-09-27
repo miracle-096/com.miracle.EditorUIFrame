@@ -8,9 +8,9 @@ namespace UIFramework.Editor.Core.Popup
     public class WorkPopupWindow: EditorWindow
     {
         private Action UpdateCallback;
-        public UIElement PopupElement;
+        public EPanel PopupElement;
         
-        public void SetContent(UIElement popElement, Vector2 fixedSize, Action update)
+        public void SetContent(EPanel popElement, Vector2 fixedSize, Action update)
         {
             rootVisualElement.Clear();
             this.PopupElement = popElement;

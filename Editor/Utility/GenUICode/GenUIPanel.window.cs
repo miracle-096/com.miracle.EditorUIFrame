@@ -9,7 +9,7 @@ namespace UIFramework.Editor.Utility.GenUICode
         public static string ParsUxmlPath;
         private Vector2 preSize;
 
-        protected override UIElement MakeView(params object[] objs)
+        protected override EPanel MakeView(params object[] objs)
         {
             rootVisualElement.Clear();
             uiPage = UILoader.LoadElement<GenUIPanel>(rootVisualElement,ParsUxmlPath);

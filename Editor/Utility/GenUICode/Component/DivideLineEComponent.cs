@@ -7,7 +7,7 @@ namespace UIFramework.Editor.Utility.GenUICode.Component
     /// <summary>
     /// 分割线组件
     /// </summary>
-    public class DivideLineUIComponent: UIComponent
+    public class DivideLineEComponent: EComponent
     {
         private GenUIPanel _panel;
 

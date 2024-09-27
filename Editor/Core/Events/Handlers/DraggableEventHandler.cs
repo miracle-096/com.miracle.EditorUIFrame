@@ -1,8 +1,7 @@
-using UIFramework.Core.UIEvent.Interface;
 using UIFramework.Extends;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core.UIEvent.handler
+namespace UIFramework.Core
 {
     public class DraggableEventHandler
     {

@@ -53,7 +53,7 @@ namespace UIFramework.Editor.Utility.GenUICode
         protected override void OnCreate(params object[] objs)
         {
             base.OnCreate();
-            UIFramework.Extends.Extends.AddComponent<DivideLineUIComponent>(CutLine, this);
+            UIFramework.Extends.Extends.AddComponent<DivideLineEComponent>(CutLine, this);
 
             toggleGroup = new List<FoldoutHeader>();
             RootContainer.style.width = new StyleLength(new Length(100, LengthUnit.Percent));

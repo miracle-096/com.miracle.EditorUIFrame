@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UIFramework.Core;
-using UIFramework.Core.UIEvent.Interface;
 using UnityEditor;
 using UnityEngine.UIElements;
 
@@ -9,12 +8,12 @@ namespace UIFramework.Extends
 {
     public static class Extends
     {
-        public static void Destroy(this UIElement element)
+        public static void Destroy(this EPanel element)
         {
-            UIElement.Destroy(element);
+            EPanel.Destroy(element);
         }
 
-        public static T GetComponent<T>(this VisualElement element) where T : UIComponent
+        public static T GetComponent<T>(this VisualElement element) where T : EComponent
         {
             if (!UIWindow.AllObjects.ContainsKey(element)) return null;
             var components = UIWindow.AllObjects[element].AllComponents;
@@ -22,11 +21,11 @@ namespace UIFramework.Extends
             return null;
         }
 
-        public static T AddComponent<T>(this VisualElement target, UIElement panel = null)
-            where T : UIComponent, new()
+        public static T AddComponent<T>(this VisualElement target, EPanel panel = null)
+            where T : EComponent, new()
         {
             var visualObject = UIWindow.Find(target);
-            visualObject.AllComponents ??= new Dictionary<Type, UIComponent>();
+            visualObject.AllComponents ??= new Dictionary<Type, EComponent>();
             T component = new T();
             component.gameobject = visualObject;
             component.element = target;
