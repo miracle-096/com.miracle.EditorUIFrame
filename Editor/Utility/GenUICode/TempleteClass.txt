@@ -1,5 +1,5 @@
 [UIFramework.UIAttribute(Uxml = "@Uxml",Uss="@Uss")]
-public partial class @ClassName : UIElement
+public partial class @ClassName : EPanel
 {
 @Members
     
