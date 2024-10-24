@@ -1,5 +1,5 @@
 using System;
 using UIFramework.Core;
 using UnityEngine;
-using UnityEngine.UEPanel;
+using UnityEngine.UIElements;
 @Namespace
