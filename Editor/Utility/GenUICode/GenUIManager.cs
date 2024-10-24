@@ -73,20 +73,18 @@ namespace UIFramework.Editor.Utility.GenUICode
         private static void BuildClass(string outPath, string nameSpace, string className,
             List<Tuple<Type, string, string>> fields)
         {
-            string templateNamespacePath = Path.Combine(Application.dataPath,
-                "../../ZPGame.packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/TempleteNamespace.txt");
-            string templateClassPath = Path.Combine(Application.dataPath,
-                "../../ZPGame.packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/TempleteClass.txt");
-            string templateNamespace = File.ReadAllText(templateNamespacePath);
-            string templateClass = File.ReadAllText(templateClassPath);
+            var nsTextAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/TempleteNamespace.txt");
+            string templateNamespace = nsTextAsset.text;
+            var classTextAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/TempleteClass.txt");
+            string templateClass = classTextAsset.text;
             StringBuilder templateNS = new StringBuilder(templateNamespace);
             StringBuilder templateCS = new StringBuilder(templateClass);
             StringBuilder members = new StringBuilder();
             StringBuilder constructs = new StringBuilder();
             foreach (var (fieldType, fieldName, elementName) in fields)
             {
-                members.AppendLine($"\t\tpublic {fieldType.Name} {fieldName};");
-                constructs.AppendLine($"\t\t\t{fieldName} = Q<{fieldType.Name}>(\"{elementName}\");");
+                members.AppendLine($"\tpublic {fieldType.Name} {fieldName};");
+                constructs.AppendLine($"\t\t{fieldName} = Q<{fieldType.Name}>(\"{elementName}\");");
             }
 
             string fileName = Path.GetFileNameWithoutExtension(outPath).Split('.')[0];
