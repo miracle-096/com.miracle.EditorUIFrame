@@ -11,7 +11,7 @@ namespace UIFramework.Editor.Demo.SimpleWindow
         [MenuItem("Tools/Editor_Tools/Demo/SimpleWindow", false, -1)]
         public static void OpenDemoWindow()
         {
-            GetWindow<SimpleWindow>().OpenView();
+            GetWindow<SimpleWindow>().OpenPanel();
         }
 
         protected override EPanel MakeView(params object[] objs)

@@ -42,7 +42,7 @@ namespace UIFramework.Editor.Utility.GenUICode
                 uiWindow = EditorWindow.GetWindow<GenUIWindow>(typeof(SceneView));
             }
 
-            uiWindow.OpenView();
+            uiWindow.OpenPanel();
         }
 
         /// <summary>

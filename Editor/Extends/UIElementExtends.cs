@@ -41,6 +41,14 @@ namespace UIFramework.Editor.Extends
             element.style.borderTopWidth = width;
         }
 
+        public static void SetBorderColor(this VisualElement element, Color color)
+        {
+            element.style.borderLeftColor = new StyleColor(color);
+            element.style.borderRightColor = new StyleColor(color);
+            element.style.borderTopColor = new StyleColor(color);
+            element.style.borderBottomColor = new StyleColor(color);
+        }
+
         public static void SetHeight(this VisualElement element, float height, LengthUnit heightUnit)
         {
             element.style.height = new Length(height, heightUnit);

@@ -12,6 +12,7 @@ namespace UIFramework.Core
     /// </summary>
     public abstract class UIWindow : EditorWindow
     {
+        private static UIWindow instance;
         public virtual Vector2 MIN_SIZE => new Vector2(0, 0);
         public static Action<KeyCode> OnKeyDown;
         public static Action<KeyCode> OnKeyUp;
@@ -63,25 +64,33 @@ namespace UIFramework.Core
 
         protected virtual void OnEnable()
         {
-            WindowManager.RegisterWindow(GetType(), this);
+            //WindowManager.RegisterWindow(GetType(), this);
             titleContent = new GUIContent(GetType().Name);
+            Focus();
+            instance = this;
         }
-
-        protected virtual void OnDisable()
+    
+        [InitializeOnLoadMethod]
+        private static void Initialize()
         {
+            // 在编译完成后恢复窗口
+            EditorApplication.delayCall += () =>
+            {
+                if (instance!=null) instance.OpenPanel(instance._datas);
+            };
         }
 
         protected virtual void OnDestroy()
         {
+            instance = null;
             if (rootEPanel != null)
             {
                 rootEPanel.OnDestroy();
                 EPanel.Destroy(rootEPanel);
                 rootEPanel = null;
             }
-
-            //To-do: Same as the above.
-            WindowManager.UnRegisterWindow(GetType());
+            
+            //WindowManager.UnRegisterWindow(GetType());
         }
 
         public static VisualObject Find(VisualElement element)
@@ -93,8 +102,10 @@ namespace UIFramework.Core
             return vo;
         }
 
-        public void OpenView(params object[] objs)
+        protected object[] _datas;
+        public void OpenPanel(params object[] objs)
         {
+            _datas = objs;
             var view = MakeView(objs);
             view.Window = this;
             rootEPanel = view;
