@@ -26,13 +26,13 @@ namespace UIFramework.Editor.Demo.SimpleWindow
         
         public UnityEditor.UIElements.ObjectField ObjectField;
         
-        public UnityEditor.UIElements.BoundsIntField BoundsIntField;
+        public UnityEngine.UIElements.BoundsIntField BoundsIntField;
         
-        public UnityEditor.UIElements.Vector2Field Vector2Field;
+        public UnityEngine.UIElements.Vector2Field Vector2Field;
         
-        public UnityEditor.UIElements.Vector3Field Vector3Field;
+        public UnityEngine.UIElements.Vector3Field Vector3Field;
         
-        public UnityEditor.UIElements.Vector4Field Vector4Field;
+        public UnityEngine.UIElements.Vector4Field Vector4Field;
         
         public UnityEditor.UIElements.ColorField ColorField;
         
@@ -40,7 +40,7 @@ namespace UIFramework.Editor.Demo.SimpleWindow
         
         public UnityEditor.UIElements.GradientField GradientField;
         
-        public UnityEditor.UIElements.EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
         
         public UnityEditor.UIElements.TagField TagField;
         
@@ -58,14 +58,14 @@ namespace UIFramework.Editor.Demo.SimpleWindow
             LabelID = Q<UnityEngine.UIElements.Label>("LabelID");
             ProgressBar = Q<UnityEngine.UIElements.ProgressBar>("ProgressBar");
             ObjectField = Q<UnityEditor.UIElements.ObjectField>("ObjectField");
-            BoundsIntField = Q<UnityEditor.UIElements.BoundsIntField>("BoundsIntField");
-            Vector2Field = Q<UnityEditor.UIElements.Vector2Field>("Vector2Field");
-            Vector3Field = Q<UnityEditor.UIElements.Vector3Field>("Vector3Field");
-            Vector4Field = Q<UnityEditor.UIElements.Vector4Field>("Vector4Field");
+            BoundsIntField = Q<UnityEngine.UIElements.BoundsIntField>("BoundsIntField");
+            Vector2Field = Q<UnityEngine.UIElements.Vector2Field>("Vector2Field");
+            Vector3Field = Q<UnityEngine.UIElements.Vector3Field>("Vector3Field");
+            Vector4Field = Q<UnityEngine.UIElements.Vector4Field>("Vector4Field");
             ColorField = Q<UnityEditor.UIElements.ColorField>("ColorField");
             CurveField = Q<UnityEditor.UIElements.CurveField>("CurveField");
             GradientField = Q<UnityEditor.UIElements.GradientField>("GradientField");
-            EnumField = Q<UnityEditor.UIElements.EnumField>("EnumField");
+            EnumField = Q<UnityEngine.UIElements.EnumField>("EnumField");
             TagField = Q<UnityEditor.UIElements.TagField>("TagField");
             MaskField = Q<UnityEditor.UIElements.MaskField>("MaskField");
             LayerField = Q<UnityEditor.UIElements.LayerField>("LayerField");

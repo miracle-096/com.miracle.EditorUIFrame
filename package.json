@@ -1,9 +1,9 @@
 {
-  "name": "com.uitoolkit.uiframework",
-  "displayName": "UIToolkit.UIFramework",
-  "description": "UIFramework",
+  "name": "com.miracle.editoruiframe",
+  "displayName": "Miracle.EditorUIFrame",
+  "description": "基于uitoolkit的UnityEditor扩展UI框架",
   "version": "1.0.0",
-  "unity": "2020.1",
+  "unity": "2022.3",
   "license": "MIT",
   "type": "library",
   "restart": 1,
