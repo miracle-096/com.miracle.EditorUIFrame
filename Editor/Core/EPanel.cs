@@ -1,15 +1,14 @@
 using System;
+using LitJson;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UIFramework.Core
 {
     public abstract class EPanel
     {
-        public UIWindow Window;
-        public static T Create<T>(VisualElement container, params object[] objs) where T : EPanel
-        {
-            return Create(typeof(T), container, objs) as T;
-        }
+        public static UIWindow Window;
 
         public static EPanel Create(Type uiType, VisualElement container, params object[] objs)
         {
@@ -24,25 +23,6 @@ namespace UIFramework.Core
             if (ui == null || ui._isDestroy) return;
             ui._isDestroy = true;
             ui.OnDestroy();
-        }
-
-        public void Destroy()
-        {
-            if (_isDestroy) return;
-            _isDestroy = true;
-            this.OnDestroy();
-        }
-
-        public static void Hide(EPanel ui)
-        {
-            ui.RootContainer.style.display = DisplayStyle.None;
-            ui.OnHide();
-        }
-
-        public static void Show(EPanel ui)
-        {
-            ui.RootContainer.style.display = DisplayStyle.Flex;
-            ui.OnShow();
         }
 
         private bool _isDestroy = false;
@@ -66,16 +46,18 @@ namespace UIFramework.Core
         }
 
 
-        public virtual void Show()
+        public void Show()
         {
-            Show(this);
+            RootContainer.style.display = DisplayStyle.Flex;
+            OnShow();
         }
 
-        protected virtual void Hide()
+        public void Hide()
         {
-            Hide(this);
+            RootContainer.style.display = DisplayStyle.None;
+            OnHide();
         }
-
+        
         protected virtual void OnCreate(params object[] objs)
         {
             RootContainer.userData = this;
@@ -91,6 +73,18 @@ namespace UIFramework.Core
 
         protected virtual void OnHide()
         {
+        }
+        
+        public void LoadFromCacheData<T>(ref T data) where T : class, new()
+        {
+            if (string.IsNullOrEmpty(Window.CacheJson))
+            {
+                Window.CacheData = data = new T();
+            }
+            else
+            {
+                Window.CacheData = data = JsonMapper.ToObject<T>(Window.CacheJson);
+            }
         }
     }
 }

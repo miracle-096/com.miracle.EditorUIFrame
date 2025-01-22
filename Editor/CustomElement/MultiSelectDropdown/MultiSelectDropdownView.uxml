@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="root" style="flex-direction: row; align-items: center;">
+        <ui:TextField picking-mode="Ignore" value="filler text" text="filler text" name="displayField" style="width: 100%; flex-shrink: 0; flex-grow: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; height: 100%;" />
+        <ui:Button display-tooltip-when-elided="true" name="dropdownButton" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 23px; background-color: rgba(255, 255, 255, 0); background-image: url(&apos;project://database/Packages/com.uitoolkit.uiframework/Editor/CustomElement/icon/foldout_focus_on.png?fileID=2800000&amp;guid=b61656329f817447aa71d2890a1fb1d6&amp;type=3#foldout_focus_on&apos;); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); right: 23px; height: 17px;" />
+    </ui:VisualElement>
+</ui:UXML>

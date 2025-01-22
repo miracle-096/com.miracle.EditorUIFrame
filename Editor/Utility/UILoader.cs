@@ -49,8 +49,7 @@ namespace UIFramework.Editor.Utility
 
             if (!string.IsNullOrEmpty(clsName))
             {
-                var guid = Guid.NewGuid().ToString();
-                tree.name = $"{clsName}_{guid}";
+                tree.name = $"{clsName}";
             }
 
             return tree;
