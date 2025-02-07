@@ -7,4 +7,9 @@ unity-tabbed-view {
     background-color: #252525;
     flex-direction: row;
 }
-
+.unity-tab-button{
+    
+}
+.unity-tab-button--active{
+    
+}

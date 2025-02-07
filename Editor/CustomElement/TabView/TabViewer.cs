@@ -65,6 +65,19 @@ namespace UIFramework.Core
                 Activate(tabButton);
             }
         }
+        
+        private void AddTabInternal(TabButton tabButton, bool activate)
+        {
+            m_Tabs.Add(tabButton);
+
+            tabButton.OnClose += RemoveTab;
+            tabButton.OnSelect += Activate;
+
+            if (activate)
+            {
+                Activate(tabButton);
+            }
+        }
 
         public void RemoveTab(TabButton tabButton)
         {
@@ -120,10 +133,10 @@ namespace UIFramework.Core
             for (int i = 0; i < m_TabContent.childCount; i++)
             {
                 VisualElement element = m_TabContent.ElementAt(i);
-
+                Debug.Log($"Element at index {i}: {element.name}");
                 if (element is TabButton button)
                 {
-                    AddTab(button, false);
+                    AddTabInternal(button, false);
                 }
             }
             
