@@ -1,7 +1,8 @@
-using UIFramework.Extends;
+using UIFramework.Editor.Core.Events.Interface;
+using UIFramework.Editor.Extensions;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core.Events.Handlers
 {
     public class DoubleClickHandler
     {

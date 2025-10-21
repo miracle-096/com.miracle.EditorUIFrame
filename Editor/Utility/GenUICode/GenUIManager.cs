@@ -29,7 +29,7 @@ namespace UIFramework.Editor.Utility.GenUICode
                 Debug.LogWarning("Selected object is not a .uxml file.");
                 return;
             }
-            GenUIWindow.ParsUxmlPath = path.Replace('\\', '/');
+            var parsUxmlPath = path.Replace('\\', '/');
             GenUIWindow uiWindow = null;
             if (Path.GetExtension(path) == ".uxml")
             {
@@ -42,7 +42,7 @@ namespace UIFramework.Editor.Utility.GenUICode
                 uiWindow = EditorWindow.GetWindow<GenUIWindow>(typeof(SceneView));
             }
 
-            uiWindow.OpenPanel();
+            uiWindow.OpenPanel(parsUxmlPath);
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace UIFramework.Editor.Utility.GenUICode
         private static void BuildClass(string outPath, string nameSpace, string className,
             List<Tuple<Type, string, string>> fields)
         {
-            var nsTextAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/TempleteNamespace.txt");
+            var nsTextAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages/com.miracle.EditorUIFrame/Editor/Utility/GenUICode/TempleteNamespace.txt");
             string templateNamespace = nsTextAsset.text;
-            var classTextAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/TempleteClass.txt");
+            var classTextAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Packages/com.miracle.EditorUIFrame/Editor/Utility/GenUICode/TempleteClass.txt");
             string templateClass = classTextAsset.text;
             StringBuilder templateNS = new StringBuilder(templateNamespace);
             StringBuilder templateCS = new StringBuilder(templateClass);

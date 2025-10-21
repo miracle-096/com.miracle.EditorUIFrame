@@ -1,8 +1,7 @@
-using UIFramework.Core;
-using UIFramework.Editor.Utility;
+using UIFramework.Editor.Core;
 using UnityEditor;
 
-namespace UIFramework.Editor.Demo.SimpleWindow
+namespace UIFramework.Editor.Demo
 {
     public class SimpleWindow : UIWindow
     {

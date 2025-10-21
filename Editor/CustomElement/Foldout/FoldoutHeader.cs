@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using UIFramework.Core;
+using UIFramework.Editor.Core;
 using UIFramework.Editor.CustomElement.Foldout.Component;
-using UIFramework.Extends;
+using UIFramework.Editor.Extensions;
+using UIFramework.Editor.Utility;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GenUIPanel = UIFramework.Editor.Utility.GenUICode.GenUIPanel;
 
 public partial class FoldoutHeader : EPanel
 {
@@ -89,11 +88,12 @@ public partial class FoldoutHeader : EPanel
 
     public static Texture2D LoadImg(string imgName)
     {
-        string path = Path.Combine(Directory.GetParent(Application.dataPath).FullName, "../ZPGame.packages",
-            "com.uitoolkit.uiframework", "Editor", "CustomElement", "icon", $"{imgName}.png");
-        byte[] imgData = File.ReadAllBytes(path);
-        Texture2D texture = new Texture2D(2, 2);
-        texture.LoadImage(imgData);
+        string path = "Packages/com.miracle.EditorUIFrame/Editor/CustomElement/icon/" + imgName + ".png";
+        Texture2D texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+        if (texture == null)
+        {
+            Debug.LogWarning($"Failed to load texture: {path}");
+        }
         return texture;
     }
 }

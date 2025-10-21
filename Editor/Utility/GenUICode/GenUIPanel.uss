@@ -37,9 +37,6 @@
     background-color: white;
 }
 
-VisualElement {
-}
-
 #name_space > TextInput {
     background-color: rgba(0, 0, 0, 0);
     font-size: 14px;

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core
 {
     public class VisualObject: VisualElement
     {

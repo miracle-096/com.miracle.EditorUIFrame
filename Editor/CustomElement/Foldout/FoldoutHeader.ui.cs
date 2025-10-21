@@ -1,10 +1,8 @@
-using System;
-using UIFramework.Core;
-using UnityEngine;
+using UIFramework.Editor.Core;
 using UnityEngine.UIElements;
 
-[UIFramework.UIAttribute(Uxml = "Packages/com.uitoolkit.uiframework/Editor/CustomElement/Foldout/FoldoutHeader.uxml",
-    Uss = "Packages/com.uitoolkit.uiframework/Editor/CustomElement/Foldout/FoldoutHeader.uss")]
+[UIFramework.UIAttribute(Uxml = "Packages/com.miracle.EditorUIFrame/Editor/CustomElement/Foldout/FoldoutHeader.uxml",
+    Uss = "Packages/com.miracle.EditorUIFrame/Editor/CustomElement/Foldout/FoldoutHeader.uss")]
 public partial class FoldoutHeader : EPanel
 {
     public VisualElement FocusBg;

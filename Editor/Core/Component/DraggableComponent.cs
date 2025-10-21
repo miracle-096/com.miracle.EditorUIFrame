@@ -1,8 +1,9 @@
 using System;
+using UIFramework.Editor.Core.Events.Interface;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core.Component
+namespace UIFramework.Editor.Core.Component
 {
     public class DraggableComponent: EComponent,IDraggableUIEvent
     {

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Editor.Extends
+namespace UIFramework.Editor.Core.Extensions
 {
     public static class UIElementExtends
     {

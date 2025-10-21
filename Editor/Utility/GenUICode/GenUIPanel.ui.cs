@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-using UIFramework.Core;
+using UIFramework.Editor.Core;
 using UnityEngine;
 using UnityEngine.UIElements;
-namespace UIFramework.Editor.Utility.GenUICode
+namespace UIFramework.Editor.Utility
 {
-    [UIFramework.UIAttribute(Uxml = "Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uxml",
-        Uss="Packages/com.uitoolkit.uiframework/Editor/Utility/GenUICode/GenUIPanel.uss")]
+    [UIFramework.UIAttribute(Uxml = "Packages/com.miracle.EditorUIFrame/Editor/Utility/GenUICode/GenUIPanel.uxml",
+        Uss="Packages/com.miracle.EditorUIFrame/Editor/Utility/GenUICode/GenUIPanel.uss")]
     public partial class GenUIPanel : EPanel
     {
         

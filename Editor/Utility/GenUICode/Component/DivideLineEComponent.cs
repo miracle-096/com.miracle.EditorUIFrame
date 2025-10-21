@@ -1,4 +1,4 @@
-using UIFramework.Core;
+using UIFramework.Editor.Core;
 using UnityEngine;
 using UnityEngine.UIElements;
 

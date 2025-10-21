@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core.Component
+namespace UIFramework.Editor.Core.Component
 {
     public class ToggleGroup: EComponent
     {

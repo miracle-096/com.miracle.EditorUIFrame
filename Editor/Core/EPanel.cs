@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core
 {
     public abstract class EPanel
     {
@@ -73,18 +73,6 @@ namespace UIFramework.Core
 
         protected virtual void OnHide()
         {
-        }
-        
-        public void LoadFromCacheData<T>(ref T data) where T : class, new()
-        {
-            if (string.IsNullOrEmpty(Window.CacheJson))
-            {
-                Window.CacheData = data = new T();
-            }
-            else
-            {
-                Window.CacheData = data = JsonMapper.ToObject<T>(Window.CacheJson);
-            }
         }
     }
 }

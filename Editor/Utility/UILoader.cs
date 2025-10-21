@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Editor.Utility
+namespace UIFramework.Editor.Core
 {
     public class UILoader
     {

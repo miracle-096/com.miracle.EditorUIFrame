@@ -1,18 +1,18 @@
 using UIFramework.Core;
+using UIFramework.Editor.Core;
 using UnityEngine;
 
-namespace UIFramework.Editor.Utility.GenUICode
+namespace UIFramework.Editor.Utility
 {
     public class GenUIWindow : UIWindow
     {
         public GenUIPanel uiPage;
-        public static string ParsUxmlPath;
         private Vector2 preSize;
 
         protected override EPanel MakeView(params object[] objs)
         {
             rootVisualElement.Clear();
-            uiPage = UILoader.LoadElement<GenUIPanel>(rootVisualElement,ParsUxmlPath);
+            uiPage = UILoader.LoadElement<GenUIPanel>(rootVisualElement,objs);
             preSize = rootVisualElement.localBound.size;
             uiPage.ChangeSize(preSize);
             return uiPage;

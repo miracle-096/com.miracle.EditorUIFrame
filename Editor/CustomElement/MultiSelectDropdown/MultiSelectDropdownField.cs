@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UIFramework.Editor.Utility;
+using UIFramework.Editor.Core;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;

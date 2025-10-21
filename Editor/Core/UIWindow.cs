@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using LitJson;
 using UIFramework.Editor.Core;
+using UIFramework.Editor.Core.Events.Handlers;
+using UIFramework.Editor.Core.Events.Interface;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core
 {
     /// <summary>
     /// 编辑器ui panel容器
@@ -14,8 +16,8 @@ namespace UIFramework.Core
     public abstract class UIWindow : EditorWindow
     {
         private static UIWindow instance;
-        public string CacheJson { get; set; }
-        public object CacheData { get; set; }
+        public string cacheJson;
+        public object[] cacheDatas;
         public virtual Vector2 MIN_SIZE => new Vector2(0, 0);
         public static Action<KeyCode> OnKeyDown;
         public static Action<KeyCode> OnKeyUp;
@@ -81,11 +83,14 @@ namespace UIFramework.Core
             // 在编译完成后恢复窗口
             EditorApplication.delayCall += () =>
             {
-                if (instance != null) instance.OpenPanel(instance._datas);
+                if (instance != null) 
+                {
+                    instance.OpenPanel(instance.cacheDatas);
+                }
             };
         }
 
-        private unsafe void OnDisable()
+        private void OnDisable()
         {
             if (rootEPanel != null)
             {
@@ -102,8 +107,6 @@ namespace UIFramework.Core
                 EPanel.Destroy(rootEPanel);
                 rootEPanel = null;
             }
-
-            //WindowManager.UnRegisterWindow(GetType());
         }
 
         public static VisualObject Find(VisualElement element)
@@ -115,11 +118,10 @@ namespace UIFramework.Core
             return vo;
         }
 
-        protected object[] _datas;
 
         public void OpenPanel(params object[] objs)
         {
-            _datas = objs;
+            cacheDatas = objs;
             var view = MakeView(objs);
             rootEPanel = view;
         }
@@ -178,18 +180,21 @@ namespace UIFramework.Core
 
         private void SaveCache()
         {
-            if (CacheData != null)
+            if (cacheDatas != null)
             {                
-                CacheJson = JsonMapper.ToJson(CacheData);
-                EditorPrefs.SetString(GetType().Name + "_cache", CacheJson);
+                cacheJson = JsonMapper.ToJson(cacheDatas);
+                EditorPrefs.SetString(GetType().Name + "_cache", cacheJson);
             }
+            
         }
 
         private void LoadCache()
         {
             if (EditorPrefs.HasKey(GetType().Name + "_cache"))
             {
-                CacheJson = EditorPrefs.GetString(GetType().Name + "_cache");
+                cacheJson = EditorPrefs.GetString(GetType().Name + "_cache");
+                if (!string.IsNullOrEmpty(cacheJson))
+                    cacheDatas = JsonMapper.ToObject<object[]>(cacheJson);
             }
         }
 

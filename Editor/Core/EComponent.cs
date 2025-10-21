@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core
 {
     /// <summary>
     /// visual element组件，所有组件的基类

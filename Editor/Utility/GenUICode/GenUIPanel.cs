@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using UIFramework.Editor.CustomElement.Foldout;
+using UIFramework.Editor.Core;
+using UIFramework.Editor.Extensions;
+using UIFramework.Editor.Utility.GenUICode;
 using UIFramework.Editor.Utility.GenUICode.Component;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Editor.Utility.GenUICode
+namespace UIFramework.Editor.Utility
 {
     public partial class GenUIPanel
     {
@@ -22,7 +25,7 @@ namespace UIFramework.Editor.Utility.GenUICode
         private List<Tuple<Type, string, string>> fields;
 
         private void OnGenerateClick()
-        {
+        { 
             EditorUtility.DisplayProgressBar("自动生成脚本", "正在生成.cs", 0);
             fields = new List<Tuple<Type, string, string>>();
             foreach (FoldoutHeader labelFoldout in toggleGroup)
@@ -53,7 +56,7 @@ namespace UIFramework.Editor.Utility.GenUICode
         protected override void OnCreate(params object[] objs)
         {
             base.OnCreate();
-            UIFramework.Extends.Extends.AddComponent<DivideLineEComponent>(CutLine, this);
+            CutLine.AddComponent<DivideLineEComponent>(this);
 
             toggleGroup = new List<FoldoutHeader>();
             RootContainer.style.width = new StyleLength(new Length(100, LengthUnit.Percent));
@@ -62,24 +65,8 @@ namespace UIFramework.Editor.Utility.GenUICode
             Generate.clicked += OnGenerateClick;
 
             ParseUxmlPath = objs[0] as string;
-            //string[] spaces = null;
-            //AssemblyDefinitionAsset asmdef = null;
-            // if (ParseUxmlPath.Contains("/Editor/"))
-            // {
-            //     GetNamespace("/Editor/", out asmdef, out spaces);
-            // }
-            //
-            // if (ParseUxmlPath.Contains("/Runtime/"))
-            // {
-            //     GetNamespace("/Runtime/", out asmdef, out spaces);
-            // }
-            // GenAssembly genAssembly = JsonUtility.FromJson<GenAssembly>(asmdef.text);
+            Assert.IsFalse(string.IsNullOrEmpty(ParseUxmlPath),"要解析的ParseUxmlPath是空的");
 
-            // NameSpace.value = string.Join(".", spaces, 0, spaces.Length - 1);
-            // if (!string.IsNullOrEmpty(genAssembly.rootNamespace))
-            // {
-            //     NameSpace.value = genAssembly.rootNamespace + "." + NameSpace.value;
-            // }
             NameSpace.value = "";
             
             UxmlName = Path.GetFileName(ParseUxmlPath);
@@ -101,8 +88,7 @@ namespace UIFramework.Editor.Utility.GenUICode
             AddChild(_rootFold, container, 0);
         }
 
-        public void GetNamespace(string EditorOrRuntime,out AssemblyDefinitionAsset asmdef,
-            out string[] spaces)
+        public void GetNamespace(string EditorOrRuntime,out AssemblyDefinitionAsset asmdef, out string[] spaces)
         {
             spaces = new string[] { };
             asmdef = null;

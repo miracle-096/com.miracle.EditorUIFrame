@@ -1,6 +1,6 @@
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core.Events.Interface
 {
     public interface IDoubleClickUIEvent : IUIEvent
     {

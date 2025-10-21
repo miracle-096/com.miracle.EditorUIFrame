@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UIFramework.Editor.Demo.SimpleWindow
+namespace UIFramework.Editor.Demo
 {
     public partial class SimplePanel
     {

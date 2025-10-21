@@ -9,14 +9,15 @@
 //------------------------------------------------------------------------------
 
 using UIFramework.Core;
+using UIFramework.Editor.Core;
 
-namespace UIFramework.Editor.Demo.SimpleWindow
+namespace UIFramework.Editor.Demo
 {
     using System;
     using UnityEngine;
     
     
-    [UIFramework.UIAttribute(Uxml="Packages/com.uitoolkit.uiframework/Editor/Demo/SimpleWindow/SimplePanel.uxml", Uss="Packages/com.uitoolkit.uiframework/Editor/Demo/SimpleWindow/SimplePanel.uss")]
+    [UIFramework.UIAttribute(Uxml="Packages/com.miracle.EditorUIFrame/Editor/Demo/SimpleWindow/SimplePanel.uxml", Uss="Packages/com.miracle.EditorUIFrame/Editor/Demo/SimpleWindow/SimplePanel.uss")]
     public partial class SimplePanel : EPanel
     {
         

@@ -1,7 +1,8 @@
-using UIFramework.Extends;
+using UIFramework.Editor.Core.Events.Interface;
+using UIFramework.Editor.Extensions;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Core
+namespace UIFramework.Editor.Core.Events.Handlers
 {
     public class ReceiveDragEventHandler
     {
@@ -18,7 +19,7 @@ namespace UIFramework.Core
         public static void UnRegisterReceiveDragEvent<T>(T panel,VisualElement target) where T:IReceiveDragUIEvent
         {
             target?.UnregisterCallback<DragEnterEvent>(panel.OnDragEnter);
-            target?.UnregisterCallback<DragUpdatedEvent>(panel.OnDragUpdated);
+            target?.UnregisterCallback<DragUpdatedEvent>(panel.OnDragUpdatedExtends);
             target?.UnregisterCallback<DragPerformEvent>(panel.OnReceivedDrag);
             target?.UnregisterCallback<DragLeaveEvent>(panel.OnDragLeave);
         }

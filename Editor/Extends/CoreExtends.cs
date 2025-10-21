@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UIFramework.Core;
+using UIFramework.Editor.Core;
+using UIFramework.Editor.Core.Events.Interface;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-namespace UIFramework.Extends
+namespace UIFramework.Editor.Extensions
 {
     public static class Extends
     {

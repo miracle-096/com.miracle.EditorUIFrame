@@ -4,7 +4,7 @@
 // using UnityEditor;
 // using UnityEngine;
 //
-// namespace UIFramework.Editor.Core
+//namespace UIFramework.Editor.Core
 // {
 //     public static class WindowManager
 //     {

@@ -1,9 +1,6 @@
-using System;
-using UIFramework.Core;
-using UnityEngine;
-using UnityEditor.UIElements;
+using UIFramework.Editor.Core;
 using UnityEngine.UIElements;
-[UIFramework.UIAttribute(Uxml = "Packages/com.uitoolkit.uiframework/Editor/CustomElement/TabView/TabView.uxml",Uss="Packages/com.uitoolkit.uiframework/Editor/CustomElement/TabView/TabView.uss")]
+[UIFramework.UIAttribute(Uxml = "Packages/com.miracle.EditorUIFrame/Editor/CustomElement/TabView/TabView.uxml",Uss="Packages/com.miracle.EditorUIFrame/Editor/CustomElement/TabView/TabView.uss")]
 public partial class TabView : EPanel
 {
 	public VisualElement TabsContainer;
